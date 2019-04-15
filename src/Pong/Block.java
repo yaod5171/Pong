@@ -3,72 +3,105 @@ package Pong;
 //(c) A+ Computer Science
 //www.apluscompsci.com
 //Name -
-
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Block implements Locatable
-{
-	private int xPos;
-	private int yPos;
-	private int width;
-	private int height;
+public class Block implements Locatable {
 
-	private Color color;
+    private int xPos;
+    private int yPos;
+    private int width;
+    private int height;
 
-	public Block()
-	{
+    private Color color;
 
+    public Block() {
+        xPos = 0;
+        yPos = 0;
+        width = 0;
+        height = 0;
+    }
 
-	}
+    public Block(int x, int y, int Width, int Height) {
+        xPos = x;
+        yPos = y;
+        width = Width;
+        height = Height;
+    }
 
-	//add other Block constructors - x , y , width, height, color
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-   //add the other set methods
-   
+    public Block(int x, int y, int Width, int Height, Color col) {
+        xPos = x;
+        yPos = y;
+        width = Width;
+        height = Height;
+        color = col;
+    }
 
-   public void setColor(Color col)
-   {
+    //add the other set methods
+    public void setColor(Color col) {
+        color = col;
+    }
 
+    public void setPos(int x, int y) {
+        xPos = x;
+        yPos = y;
+    }
 
-   }
+    public void setX(int x) {
+        xPos = x;
+    }
 
-   public void draw(Graphics window)
-   {
-   	//uncomment after you write the set and get methods
-      //window.setColor(color);
-      //window.fillRect(getX(), getY(), getWidth(), getHeight());
-   }
+    public void setY(int y) {
+        yPos = y;
+    }
 
-   public void draw(Graphics window, Color col)
-   {
+    public void setWidth(int Width) {
+        width = Width;
+    }
 
+    public void setHeight(int Height) {
+        height = Height;
+    }
 
-   }
-   
-	public boolean equals(Object obj)
-	{
+    public void draw(Graphics window) {
+        //uncomment after you write the set and get methods
+        window.setColor(color);
+        window.fillRect(getX(), getY(), getWidth(), getHeight());
+    }
 
+    public void draw(Graphics window, Color col) {
 
+    }
 
+    public boolean equals(Object obj) {
+        Block comp = (Block)obj;
+        return (getX() == comp.getX() && getY() == comp.getY() && 
+                getWidth() == comp.getWidth() && getHeight() == comp.getHeight()
+                && getColor().equals(comp.getColor()));
+    }
 
-		return false;
-	}   
+    //add the other get methods
+    public Color getColor() {
+        return color;
+    }
+    public int getX() {
+        return xPos;
+    }
 
-   //add the other get methods
-    
+    public int getY() {
+        return yPos;
+    }
 
-   //add a toString() method  - x , y , width, height, color
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    //add a toString() method  - x , y , width, height, color
+    public String toString() {
+        return xPos + " " + yPos + " " + width + " " + height + " " + color;
+    }
 }
