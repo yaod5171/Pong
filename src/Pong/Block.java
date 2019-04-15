@@ -84,6 +84,7 @@ public class Block implements Locatable {
         } else {
             colorsMatch = getColor().equals(comp.getColor());
         }
+        //check everything else
         return (getX() == comp.getX() && getY() == comp.getY() && 
             getWidth() == comp.getWidth() && getHeight() == comp.getHeight()
             && colorsMatch);
