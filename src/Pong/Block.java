@@ -75,9 +75,18 @@ public class Block implements Locatable {
 
     public boolean equals(Object obj) {
         Block comp = (Block)obj;
+        //check if color matches
+        boolean colorsMatch;
+        if (getColor() == null && comp.getColor() == null) {
+            colorsMatch = true;
+        } else if (getColor() == null || comp.getColor() == null) {
+            colorsMatch = false;
+        } else {
+            colorsMatch = getColor().equals(comp.getColor());
+        }
         return (getX() == comp.getX() && getY() == comp.getY() && 
-                getWidth() == comp.getWidth() && getHeight() == comp.getHeight()
-                && getColor().equals(comp.getColor()));
+            getWidth() == comp.getWidth() && getHeight() == comp.getHeight()
+            && colorsMatch);
     }
 
     //add the other get methods
