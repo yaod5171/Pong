@@ -21,6 +21,13 @@ public class Block implements Locatable {
         width = 0;
         height = 0;
     }
+    
+    public Block(int x, int y) {
+        xPos = x;
+        yPos = y;
+        width = 10;
+        height = 10;
+    }
 
     public Block(int x, int y, int Width, int Height) {
         xPos = x;
