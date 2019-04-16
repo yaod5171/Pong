@@ -70,6 +70,11 @@ public class Paddle extends Block {
         this.speed = speed;
     }
     
+    public boolean equals(Object obj) {
+        Paddle comp = (Paddle)obj;
+        return (super.equals(comp) && speed == comp.getSpeed());
+    }
+    
     public String toString() {
         return super.toString() + " " + speed;
     }

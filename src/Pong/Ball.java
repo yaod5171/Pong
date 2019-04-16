@@ -76,8 +76,6 @@ public class Ball extends Block {
     
    //add a toString() method
     public String toString() {
-        return getX() + " " + getY() + " " + 
-                getWidth() + " " + getHeight() + " " + 
-                getColor() + " " + xSpeed + " " + ySpeed;
+        return super.toString() + " " + xSpeed + " " + ySpeed;
     }
 }
