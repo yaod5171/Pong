@@ -21,7 +21,7 @@ class BallTestTwo extends Canvas implements Runnable
 		setVisible(true);
 
 		//instantiate a new Ball
-
+                ball = new Ball(200, 200, 10, 10, Color.RED);
 
 		//test the Ball thoroughly
 		
@@ -31,12 +31,12 @@ class BallTestTwo extends Canvas implements Runnable
 
 		new Thread(this).start();
 	}
-	
+	/*
 	public void update(Graphics window)
 	{
 		paint(window);
 	}
-
+*/
 	public void paint(Graphics window)
 	{
 		ball.moveAndDraw(window);
