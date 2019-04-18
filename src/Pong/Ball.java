@@ -6,7 +6,7 @@ package Pong;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball extends Block {
+public class Ball extends Block implements Collidable {
 
     private int xSpeed;
     private int ySpeed;
