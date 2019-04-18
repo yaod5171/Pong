@@ -82,6 +82,13 @@ public class Ball extends Block {
         window.fillRect(getX(), getY(), getWidth(), getHeight());
     }
 
+    public boolean horizontalCollideWith(Object obj) {
+        Block block = (Block)obj;
+        if (getY() + getHeight() >= block)
+        if ((getX() + getXSpeed()) <= (block.getX() + block.getWidth()))
+    }
+    
+    
     public boolean equals(Object obj) {
         Ball comp = (Ball) obj;
         return (xSpeed == comp.getXSpeed() && ySpeed == comp.getYSpeed()
