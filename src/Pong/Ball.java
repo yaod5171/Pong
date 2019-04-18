@@ -103,12 +103,39 @@ public class Ball extends Block implements Collidable {
         }
         return false;
     }
-    
+
     public boolean collideBottom(Object obj) {
+        Block block = (Block) obj;
+        if (getX() + getWidth() >= block.getX()
+                && getX() <= block.getX() + block.getWidth()) {
+            if ((getY() + getHeight() + getYSpeed()) >= (block.getY())) {
+                return true;
+            }
+        }
         return false;
     }
+
     public boolean collideTop(Object obj) {
+        Block block = (Block) obj;
+        if (getX() + getWidth() >= block.getX()
+                && getX() <= block.getX() + block.getWidth()) {
+            if ((getY() + getYSpeed()) >= (block.getY() + block.getHeight())) {
+                return true;
+            }
+        }
         return false;
+    }
+    
+    public boolean collideVertical(Object obj) {
+        return (collideBottom(obj) || collideTop(obj));
+    }
+    
+    public boolean collideHorizontal(Object obj) {
+        return (collideLeft(obj) || collideRight(obj));
+    }
+    
+    public boolean collide(Object obj) {
+        return (collideVertical(obj) || collideHorizontal(obj));
     }
 
     public boolean equals(Object obj) {
