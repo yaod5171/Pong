@@ -27,7 +27,7 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 
     public Pong() {
         //set up all variables related to the game
-        ball = new Ball(WIDTH / 2, HEIGHT / 2, 25, 25, Color.RED);
+        ball = new BlinkyBall(WIDTH / 2, HEIGHT / 2, 25, 25, Color.RED);
         leftPaddle = new Paddle(10, (HEIGHT - 100) / 2, 25, 100, Color.BLUE, 2);
         rightPaddle = new Paddle(WIDTH - 45, (HEIGHT - 100) / 2, 25, 100, Color.BLUE, 2);
         keys = new boolean[4];
@@ -75,6 +75,7 @@ public class Pong extends Canvas implements KeyListener, Runnable {
         //see if the ball hits the left paddle
 
         //see if the ball hits the right paddle
+        
         //see if the paddles need to be moved
         if (keys[0] == true && leftPaddle.getY() > 0) {
             //move left paddle up and draw it on the window
