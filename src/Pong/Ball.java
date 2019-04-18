@@ -68,7 +68,7 @@ public class Ball extends Block implements Collidable {
         window.setColor(getColor());
         window.fillRect(getX(), getY(), getWidth(), getHeight());
     }
-    
+
     public void moveAndDraw(Graphics window, Color col) {
         //draw a white ball at old ball location
         window.setColor(Color.WHITE);
@@ -82,13 +82,35 @@ public class Ball extends Block implements Collidable {
         window.fillRect(getX(), getY(), getWidth(), getHeight());
     }
 
-    public boolean horizontalCollideWith(Object obj) {
-        Block block = (Block)obj;
-        if (getY() + getHeight() >= block)
-        if ((getX() + getXSpeed()) <= (block.getX() + block.getWidth()))
+    public boolean collideLeft(Object obj) {
+        Block block = (Block) obj;
+        if (getY() + getHeight() >= block.getY()
+                && getY() <= block.getY() + block.getHeight()) {
+            if ((getX() + getXSpeed()) <= (block.getX() + block.getWidth())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean collideRight(Object obj) {
+        Block block = (Block) obj;
+        if (getY() + getHeight() >= block.getY()
+                && getY() <= block.getY() + block.getHeight()) {
+            if ((getX() + getWidth() + getXSpeed()) >= (block.getX())) {
+                return true;
+            }
+        }
+        return false;
     }
     
-    
+    public boolean collideBottom(Object obj) {
+        return false;
+    }
+    public boolean collideTop(Object obj) {
+        return false;
+    }
+
     public boolean equals(Object obj) {
         Ball comp = (Ball) obj;
         return (xSpeed == comp.getXSpeed() && ySpeed == comp.getYSpeed()
