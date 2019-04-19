@@ -29,7 +29,7 @@ public class Balls extends Canvas implements Runnable {
         for (int i = 0; i < count; i++) {
             balls[i] = new Ball((int) (Math.random() * (WIDTH-200) + 100),
                     (int) (Math.random() * (HEIGHT-200) + 100),
-                    10, 10, randomColor(),
+                    (int)(Math.random()*5)+8, randomColor(),
                     (int)(Math.random()*7-3), (int)(Math.random()*7-3));
         }
 
@@ -67,13 +67,20 @@ public class Balls extends Canvas implements Runnable {
         //update each ball
         for (Ball ball : balls) {
             //see if ball hits left wall or right wall
-            if (ball.getX() <= 0 || (ball.getX() + ball.getWidth()) >= WIDTH) {
-                ball.setXSpeed(-ball.getXSpeed());
+            if (ball.getX() <= 0) {
+                ball.setXSpeed(Math.abs(ball.getXSpeed()));
+            }
+                    
+            if ((ball.getX() + ball.getWidth()) >= WIDTH) {
+                ball.setXSpeed(-Math.abs(ball.getXSpeed()));
             }
 
             //see if the ball hits the top or bottom wall 
-            if (ball.getY() <= 0 || (ball.getY() + ball.getHeight()) >= getHeight()) {
-                ball.setYSpeed(-ball.getYSpeed());
+            if (ball.getY() <= 0) {
+                ball.setYSpeed(Math.abs(ball.getYSpeed()));
+            }
+            if (ball.getY() + ball.getHeight() >= getHeight()) {
+                ball.setYSpeed(-Math.abs(ball.getYSpeed()));
             }
 
             //if the ball collides with another ball
