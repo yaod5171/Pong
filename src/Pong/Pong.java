@@ -60,34 +60,60 @@ public class Pong extends Canvas implements KeyListener, Runnable {
         leftPaddle.draw(graphToBack, Color.WHITE);
         rightPaddle.draw(graphToBack, Color.WHITE);
 
-        //see if ball hits left wall or right wall
-        if (!(ball.getX() >= 0 && (ball.getX() + ball.getWidth()) <= WIDTH)) {
-            //ball.setXSpeed(-ball.getXSpeed());
-            ball.setXSpeed(0);
-            ball.setYSpeed(0);
-        }
+        //if game has not ended yet:
+        if (ball.getXSpeed() != 0) {
+            //see if ball hits left wall or right wall
+            if (!(ball.getX() >= 0 && (ball.getX() + ball.getWidth()) <= WIDTH)) {
+                //ball.setXSpeed(-ball.getXSpeed());
+                ball.setXSpeed(0);
+                ball.setYSpeed(0);
+            }
 
-        //see if the ball hits the top or bottom wall 
-        if (!(ball.getY() >= 0 && (ball.getY() + ball.getHeight()) <= getHeight())) {
-            ball.setYSpeed(-ball.getYSpeed());
+            //see if the ball hits the top or bottom wall 
+            if (!(ball.getY() >= 0 && (ball.getY() + ball.getHeight()) <= getHeight())) {
+                ball.setYSpeed(-ball.getYSpeed());
+            }
+            /*
+             //make the ball be "pushed" by the paddles, if it hits the side
+             if (ball.collideBottom(leftPaddle)) {
+             ball.setYSpeed(-Math.abs(ball.getYSpeed()));
+             ball.setY(leftPaddle.getY() + ball.getHeight() + ball.getYSpeed());
+             }
+             if (ball.collideBottom(rightPaddle)) {
+             ball.setYSpeed(-Math.abs(ball.getYSpeed()));
+             ball.setY(rightPaddle.getY() + ball.getHeight() + ball.getYSpeed());
+             }
+
+             if (ball.collideTop(leftPaddle)) {
+             ball.setYSpeed(Math.abs(ball.getYSpeed()));
+             ball.setY(leftPaddle.getY() + leftPaddle.getHeight() + ball.getYSpeed());
+             }
+             if (ball.collideTop(rightPaddle)) {
+             ball.setYSpeed(Math.abs(ball.getYSpeed()));
+             ball.setY(rightPaddle.getY() + rightPaddle.getHeight() + ball.getYSpeed());
+             }
+             */
+            //if the ball is still in the playing field:
+            if (ball.getX() >= leftPaddle.getX() + leftPaddle.getWidth() + ball.getXSpeed()
+                    && ball.getX() <= rightPaddle.getX() + ball.getWidth() + ball.getXSpeed()) {
+
+                //see if the ball hits the left paddle
+                if (ball.collideLeft(leftPaddle)) {
+                    ball.setXSpeed(Math.abs(ball.getXSpeed()));
+                }
+
+                //see if the ball hits the right paddle
+                if (ball.collideRight(rightPaddle)) {
+                    ball.setXSpeed(-Math.abs(ball.getXSpeed()));
+                }
+            }
+            /*
+             //see if the ball hits the side of either paddle
+             if (ball.collideVertical(leftPaddle) || 
+             ball.collideVertical(rightPaddle)) {
+             ball.setYSpeed(-ball.getYSpeed());
+             }*/
         }
-        
-        //see if the ball hits the left paddle
-        if (ball.collideLeft(leftPaddle)) {
-            ball.setXSpeed(Math.abs(ball.getXSpeed()));
-        }
-        
-        //see if the ball hits the right paddle
-        if (ball.collideRight(rightPaddle)) {
-            ball.setXSpeed(-Math.abs(ball.getXSpeed()));
-        }
-        
-        //see if the ball hits the side of either paddle
-        if (ball.collideVertical(leftPaddle) || 
-                ball.collideVertical(leftPaddle)) {
-            ball.setYSpeed(-ball.getYSpeed());
-        }
-        
         //see if the paddles need to be moved
         if (keys[0] == true && leftPaddle.getY() > 0) {
             //move left paddle up and draw it on the window

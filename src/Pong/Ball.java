@@ -86,7 +86,8 @@ public class Ball extends Block implements Collidable {
         Block block = (Block) obj;
         if (getY() + getHeight() >= block.getY()
                 && getY() <= block.getY() + block.getHeight()) {
-            if ((getX() + getXSpeed()) <= (block.getX() + block.getWidth())) {
+            if ((getX() + getXSpeed()) <= (block.getX() + block.getWidth())
+                    && getX() >= block.getX()) {
                 return true;
             }
         }
@@ -97,7 +98,8 @@ public class Ball extends Block implements Collidable {
         Block block = (Block) obj;
         if (getY() + getHeight() >= block.getY()
                 && getY() <= block.getY() + block.getHeight()) {
-            if ((getX() + getWidth() + getXSpeed()) >= (block.getX())) {
+            if ((getX() + getWidth() + getXSpeed()) >= (block.getX())
+                    && getX() <= block.getX()) {
                 return true;
             }
         }
@@ -108,7 +110,8 @@ public class Ball extends Block implements Collidable {
         Block block = (Block) obj;
         if (getX() + getWidth() >= block.getX()
                 && getX() <= block.getX() + block.getWidth()) {
-            if ((getY() + getHeight() + getYSpeed()) >= (block.getY())) {
+            if ((getY() + getHeight() + getYSpeed()) >= (block.getY())
+                    && getY() <= block.getY()) {
                 return true;
             }
         }
@@ -119,7 +122,8 @@ public class Ball extends Block implements Collidable {
         Block block = (Block) obj;
         if (getX() + getWidth() >= block.getX()
                 && getX() <= block.getX() + block.getWidth()) {
-            if ((getY() + getYSpeed()) >= (block.getY() + block.getHeight())) {
+            if ((getY() + getYSpeed()) >= (block.getY() + block.getHeight())
+                    && getY() <= block.getY()) {
                 return true;
             }
         }
